@@ -1,0 +1,139 @@
+<div class="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
+  <div class="w-full max-w-md">
+    <!-- Card de Login -->
+    <p-card class="shadow-lg">
+      <!-- Logo y Título -->
+      <ng-template pTemplate="header">
+        <div class="flex flex-col items-center pt-8 pb-4">
+          <!-- Logo/Avatar -->
+          <div class="relative mb-6">
+            <div class="flex h-32 w-32 items-center justify-center rounded-lg bg-gray-200">
+              <svg
+                class="h-20 w-20 text-gray-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                />
+                <polyline
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  points="9 22 9 12 15 12 15 22"
+                />
+              </svg>
+            </div>
+            <!-- Badge -->
+            <div class="absolute -right-2 -top-2 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-400 shadow-lg">
+              <span class="text-xl font-bold text-white">A</span>
+            </div>
+          </div>
+
+          <!-- Título -->
+          <h1 class="text-2xl font-bold text-gray-800">
+            {{ 'AUTH.WELCOME' | transloco }}
+          </h1>
+        </div>
+      </ng-template>
+
+      <!-- Contenido del Card - Formulario -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-5">
+        <!-- Campo Email -->
+        <div>
+          <label for="email" class="mb-2 block text-sm font-medium text-gray-700">
+            {{ 'AUTH.EMAIL' | transloco }}
+          </label>
+          <input
+            id="email"
+            type="email"
+            pInputText
+            formControlName="email"
+            [placeholder]="'AUTH.EMAIL_PLACEHOLDER' | transloco"
+            class="w-full"
+            [ngClass]="{
+              'ng-invalid ng-dirty': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+            }"
+          />
+          @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+            <small class="text-red-500">{{ getErrorMessage('email') }}</small>
+          }
+        </div>
+
+        <!-- Campo Contraseña -->
+        <div>
+          <label for="password" class="mb-2 block text-sm font-medium text-gray-700">
+            {{ 'AUTH.PASSWORD' | transloco }}
+          </label>
+          <p-password
+            id="password"
+            formControlName="password"
+            [placeholder]="'AUTH.PASSWORD_PLACEHOLDER' | transloco"
+            [toggleMask]="true"
+            [feedback]="false"
+            styleClass="w-full"
+            inputStyleClass="w-full"
+            [ngClass]="{
+              'ng-invalid ng-dirty': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+            }"
+          />
+          @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+            <small class="text-red-500">{{ getErrorMessage('password') }}</small>
+          }
+        </div>
+
+        <!-- Olvidaste contraseña -->
+        <div class="flex justify-end">
+          <button
+            type="button"
+            class="text-sm font-medium text-blue-600 hover:text-blue-700"
+            (click)="goToForgotPassword()"
+          >
+            {{ 'AUTH.FORGOT_PASSWORD' | transloco }}
+          </button>
+        </div>
+
+        <!-- Checkbox Mantener sesión -->
+        <div class="flex items-center">
+          <p-checkbox
+            formControlName="keepSession"
+            [binary]="true"
+            inputId="keepSession"
+            class="mr-2"
+          />
+          <label for="keepSession" class="text-sm text-gray-700 cursor-pointer">
+            {{ 'AUTH.KEEP_SESSION' | transloco }}
+          </label>
+        </div>
+
+        <!-- Botón Iniciar sesión -->
+        <p-button
+          type="submit"
+          [label]="'AUTH.LOGIN' | transloco"
+          [disabled]="loginForm.invalid || isLoading()"
+          [loading]="isLoading()"
+          styleClass="w-full"
+          severity="primary"
+        />
+
+        <!-- Texto de registro -->
+        <div class="text-center pt-4">
+          <span class="text-sm text-gray-600">
+            {{ 'AUTH.NO_ACCOUNT' | transloco }}
+          </span>
+          <button
+            type="button"
+            class="ml-1 text-sm font-medium text-blue-600 hover:text-blue-700"
+            (click)="goToRegister()"
+          >
+            {{ 'AUTH.REGISTER_LINK' | transloco }}
+          </button>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

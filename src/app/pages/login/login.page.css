@@ -1,0 +1,39 @@
+/* Personalización de componentes PrimeNG con Tailwind */
+
+:host ::ng-deep .p-inputtext {
+  @apply w-full;
+}
+
+:host ::ng-deep .p-password {
+  @apply w-full;
+}
+
+:host ::ng-deep .p-password input {
+  @apply w-full;
+}
+
+:host ::ng-deep .p-button {
+  @apply w-full justify-center;
+}
+
+:host ::ng-deep .p-card {
+  @apply rounded-xl border-0;
+}
+
+:host ::ng-deep .p-card-body {
+  @apply px-8 pb-8;
+}
+
+:host ::ng-deep .p-card-content {
+  @apply p-0;
+}
+
+/* Estilo para inputs con error */
+:host ::ng-deep .ng-invalid.ng-dirty .p-inputtext {
+  @apply border-red-500;
+}
+
+:host ::ng-deep .ng-invalid.ng-dirty .p-password input {
+  @apply border-red-500;
+}
+
