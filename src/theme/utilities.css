@@ -1,0 +1,211 @@
+/**
+ * Utility Classes
+ * Clases de utilidad personalizadas para el proyecto
+ */
+
+/* Font Weight Utilities */
+.font-light {
+  font-weight: var(--font-weight-light) !important;
+}
+
+.font-regular {
+  font-weight: var(--font-weight-regular) !important;
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold) !important;
+}
+
+.font-extra-bold {
+  font-weight: var(--font-weight-extra-bold) !important;
+}
+
+/* Spacing Utilities */
+.spacing-xxs {
+  gap: var(--spacing-xxs);
+}
+
+.spacing-xs {
+  gap: var(--spacing-xs);
+}
+
+.spacing-sm {
+  gap: var(--spacing-sm);
+}
+
+.spacing-md {
+  gap: var(--spacing-md);
+}
+
+.spacing-lg {
+  gap: var(--spacing-lg);
+}
+
+.spacing-xl {
+  gap: var(--spacing-xl);
+}
+
+.spacing-xxl {
+  gap: var(--spacing-xxl);
+}
+
+/* Shadow Utilities */
+.shadow-custom-sm {
+  box-shadow: var(--box-shadow-sm);
+}
+
+.shadow-custom-md {
+  box-shadow: var(--box-shadow-md);
+}
+
+.shadow-custom-lg {
+  box-shadow: var(--box-shadow-lg);
+}
+
+/* Border Radius Utilities */
+.rounded-custom {
+  border-radius: var(--border-radius);
+}
+
+.rounded-custom-sm {
+  border-radius: var(--border-radius-sm);
+}
+
+.rounded-custom-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+.rounded-custom-xl {
+  border-radius: var(--border-radius-xl);
+}
+
+/* Color Utilities */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.text-medium {
+  color: var(--color-medium);
+}
+
+.text-dark {
+  color: var(--color-dark);
+}
+
+/* Background Utilities */
+.bg-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-contrast);
+}
+
+.bg-success {
+  background-color: var(--color-success);
+  color: var(--color-success-contrast);
+}
+
+.bg-warning {
+  background-color: var(--color-warning);
+  color: var(--color-warning-contrast);
+}
+
+.bg-danger {
+  background-color: var(--color-danger);
+  color: var(--color-danger-contrast);
+}
+
+.bg-light {
+  background-color: var(--color-light);
+  color: var(--color-light-contrast);
+}
+
+.bg-medium {
+  background-color: var(--color-medium);
+  color: var(--color-medium-contrast);
+}
+
+.bg-dark {
+  background-color: var(--color-dark);
+  color: var(--color-dark-contrast);
+}
+
+/* Surface Utilities */
+.surface-0 {
+  background-color: var(--surface-0);
+}
+
+.surface-50 {
+  background-color: var(--surface-50);
+}
+
+.surface-100 {
+  background-color: var(--surface-100);
+}
+
+.surface-200 {
+  background-color: var(--surface-200);
+}
+
+/* Focus Utilities */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Card Utilities */
+.card-custom {
+  background: var(--surface-0);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-md);
+  padding: var(--spacing-lg);
+}
+
+/* Container Utilities */
+.container-padding {
+  padding: var(--content-padding);
+}
+
+.container-padding-sm {
+  padding: var(--spacing-sm);
+}
+
+.container-padding-lg {
+  padding: var(--spacing-lg);
+}
+
+/* Transition Utilities */
+.transition-custom {
+  transition: all 0.2s ease;
+}
+
+.transition-fast {
+  transition: all 0.15s ease;
+}
+
+.transition-slow {
+  transition: all 0.3s ease;
+}

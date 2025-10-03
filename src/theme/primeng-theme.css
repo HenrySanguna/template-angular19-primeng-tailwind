@@ -1,0 +1,246 @@
+/**
+ * PrimeNG Custom Theme
+ * Tema personalizado basado en variables.css
+ */
+
+/* Importar variables base */
+@import './variables.css';
+
+/**
+ * Componentes PrimeNG - Personalización
+ */
+
+/* Buttons */
+.p-button {
+  border-radius: var(--border-radius);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease;
+}
+
+.p-button:focus {
+  box-shadow: var(--focus-ring);
+}
+
+.p-button-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.p-button-primary:hover {
+  background-color: var(--color-primary-shade);
+  border-color: var(--color-primary-shade);
+}
+
+.p-button-secondary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.p-button-success {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.p-button-warning {
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
+  color: var(--color-warning-contrast);
+}
+
+.p-button-danger {
+  background-color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+/* Input Text */
+.p-inputtext {
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  padding: 0.625rem 0.875rem;
+  font-family: var(--font-family-base);
+}
+
+.p-inputtext:enabled:focus {
+  border-color: var(--focus-color);
+  box-shadow: var(--focus-ring);
+}
+
+.p-inputtext.ng-invalid.ng-dirty {
+  border-color: var(--color-danger);
+}
+
+/* Password */
+.p-password input {
+  border-radius: var(--border-radius-sm);
+}
+
+.p-password .p-password-toggle-icon {
+  color: var(--color-medium);
+}
+
+/* Card */
+.p-card {
+  background: var(--surface-0);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-md);
+}
+
+.p-card .p-card-header {
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.p-card .p-card-body {
+  padding: var(--spacing-lg);
+}
+
+.p-card .p-card-content {
+  padding: 0;
+}
+
+/* Dialog */
+.p-dialog {
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow-lg);
+}
+
+.p-dialog .p-dialog-header {
+  background: var(--surface-0);
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--surface-200);
+}
+
+.p-dialog .p-dialog-content {
+  padding: var(--spacing-lg);
+}
+
+.p-dialog-mask {
+  background-color: var(--overlay-bg);
+}
+
+/* Toast */
+.p-toast {
+  opacity: 1;
+}
+
+.p-toast .p-toast-message {
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-md);
+  margin: var(--spacing-xs) 0;
+}
+
+.p-toast .p-toast-message-success {
+  background-color: var(--color-success);
+  border: none;
+  color: var(--color-success-contrast);
+}
+
+.p-toast .p-toast-message-info {
+  background-color: var(--color-secondary);
+  border: none;
+  color: var(--color-secondary-contrast);
+}
+
+.p-toast .p-toast-message-warn {
+  background-color: var(--color-warning);
+  border: none;
+  color: var(--color-warning-contrast);
+}
+
+.p-toast .p-toast-message-error {
+  background-color: var(--color-danger);
+  border: none;
+  color: var(--color-danger-contrast);
+}
+
+/* Checkbox */
+.p-checkbox .p-checkbox-box {
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--border-color);
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+  border-color: var(--color-primary);
+}
+
+.p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
+  box-shadow: var(--focus-ring);
+  border-color: var(--focus-color);
+}
+
+/* Dropdown */
+.p-dropdown {
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.p-dropdown:not(.p-disabled):hover {
+  border-color: var(--color-primary);
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  border-color: var(--focus-color);
+  box-shadow: var(--focus-ring);
+}
+
+.p-dropdown-panel {
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--box-shadow-md);
+}
+
+/* Table */
+.p-datatable .p-datatable-header {
+  background: var(--surface-50);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  padding: var(--spacing-md);
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  background: var(--surface-100);
+  color: var(--color-dark);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-color: var(--surface-200);
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  transition: background-color 0.2s;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+  background: var(--surface-50);
+}
+
+.p-datatable .p-datatable-tbody > tr > td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-color: var(--surface-200);
+}
+
+/* Progress Spinner */
+.p-progress-spinner-circle {
+  stroke: var(--color-primary);
+}
+
+/* BlockUI */
+.p-blockui {
+  background-color: var(--overlay-bg);
+}
+
+/* Confirm Dialog */
+.p-confirm-dialog .p-dialog-header {
+  background: var(--surface-0);
+}
+
+.p-confirm-dialog .p-confirm-dialog-icon {
+  color: var(--color-warning);
+  font-size: 2rem;
+}
+
+.p-confirm-dialog .p-confirm-dialog-message {
+  margin-left: var(--spacing-md);
+}

@@ -12,6 +12,8 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { TranslocoHttpLoader } from './core/i18n/transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';
+import { MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,5 +35,7 @@ export const appConfig: ApplicationConfig = {
       },
       loader: TranslocoHttpLoader,
     }),
+    MessageService,
+    DialogService
   ],
 };

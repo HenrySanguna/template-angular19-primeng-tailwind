@@ -1,4 +1,4 @@
-/* Personalización de componentes PrimeNG con Tailwind */
+/* Login Page - Personalización con variables del tema */
 
 :host ::ng-deep .p-inputtext {
   @apply w-full;
@@ -17,23 +17,41 @@
 }
 
 :host ::ng-deep .p-card {
-  @apply rounded-xl border-0;
+  border-radius: var(--border-radius-xl);
+  border: none;
 }
 
 :host ::ng-deep .p-card-body {
-  @apply px-8 pb-8;
+  padding: 0 var(--spacing-xl) var(--spacing-xl);
 }
 
 :host ::ng-deep .p-card-content {
-  @apply p-0;
+  padding: 0;
 }
 
-/* Estilo para inputs con error */
+/* Inputs con error */
 :host ::ng-deep .ng-invalid.ng-dirty .p-inputtext {
-  @apply border-red-500;
+  border-color: var(--color-danger);
 }
 
 :host ::ng-deep .ng-invalid.ng-dirty .p-password input {
-  @apply border-red-500;
+  border-color: var(--color-danger);
 }
+
+/* Animación sutil para el card */
+:host ::ng-deep .p-card {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 
