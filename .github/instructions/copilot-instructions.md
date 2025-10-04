@@ -6,18 +6,20 @@ applyTo: '**'
 ## Contexto del proyecto
 - Angular 19 standalone components
 - Tailwind CSS **v4.1** + PrimeNG **v19.1** con `@primeng/themes`
-- Transloco para i18n (español e inglés en `assets/i18n/`)
+- Transloco para i18n (español e inglés)
 - **Signals** como patrón principal de reactividad
 - Inyección con `inject()` en lugar de constructor
-- CSS por componente, estilos globales en `src/styles.css`
 
 
 ## Estándares de código
 - TypeScript estricto (strict mode)
-- **Signals**: `signal()`, `computed()`, `effect()`, `input()`, `output()`, `model()`, `linkedSignal()`, `resource()`
-- **RxJS** solo para: HTTP requests, eventos del router, streams complejos con operadores
-- Interoperabilidad: `toSignal()` (Observable → Signal), `toObservable()` (Signal → Observable)
-- Cleanup: con signals NO usar `destroy$` ni `takeUntil`, usar `effect()` cleanup o `onDestroy()`
+- **Signals primero**: `signal()`, `computed()`, `effect()`, `input()`, `output()`, `model()`, `linkedSignal()`, `resource()`
+- **RxJS**: solo para HTTP, router events o streams complejos que requieran operadores
+- **Interoperabilidad Signals ↔ RxJS**:
+  - Observable → Signal: usar `toSignal()` (preferido)
+  - Signal → Observable: usar `toObservable()` (solo si API lo requiere)
+  - **Evitar** `subscribe()` directo; preferir signals para estado reactivo
+- **Cleanup**: con signals NO usar `destroy$` ni `takeUntil`, usar `effect()` cleanup o `onDestroy()`
 - **Orden en componentes**:
   1. `input()` / `model()` / `output()`
   2. Signals públicos / variables privadas
@@ -29,27 +31,50 @@ applyTo: '**'
 
 
 ## Patrones y librerías
-- **PrimeNG**: `p-button`, `p-card`, `p-table`, `p-dialog`, `p-dropdown`, `p-inputtext`, `p-toast`, `p-confirmdialog`
-- **Tailwind v4**: combinar utilidades (`flex`, `p-4`, `text-center`, `bg-primary`, `rounded-lg`) con clases PrimeNG
-- **Transloco**: `{{ 'KEY' | transloco }}` en templates, `transloco.translate()` en código
-- **Formularios**: usar signals con formularios reactivos
+
+### PrimeNG
+- Usar componentes oficiales de PrimeNG v19 con `@primeng/themes`
+- Componentes comunes: `p-button`, `p-card`, `p-table`, `p-dialog`, `p-dropdown`, `p-inputtext`, `p-toast`, `p-confirmdialog`
+- Consultar documentación oficial para componentes específicos
+
+### Tailwind + PrimeNG
+- **Extender, no reemplazar**: usar clases utilitarias de Tailwind (`flex`, `p-4`, `gap-4`, `rounded-lg`) sin sobreescribir estilos core de PrimeNG
+- Combinar ambos: `<p-button class="w-full" />` es válido
+- No intentar recrear componentes PrimeNG con solo Tailwind
+
+### Transloco (i18n)
+- **Templates**: `{{ 'auth.login.title' | transloco }}`
+- **Código**: `transloco.translate('auth.login.title')`
+- **Nuevas claves**: usar formato `kebab-case` en inglés (`auth.login.submit-button`)
+- **NO hardcodear texto**: siempre usar claves de traducción
+- Traducciones en `public/assets/i18n/{es,en}.json`
+
+### Formularios
+- Usar signals con formularios reactivos
+- Para validación, usar `FormUtilsService` (ver `services-reference.prompt.md`)
 
 
 ## Servicios del proyecto
-- `ApiCallService`: llamadas HTTP (GET, POST, PUT, PATCH, DELETE)
-- `AuthService`: autenticación (login, logout, register, refreshToken, checkTokenValidity, getUserData, recoverPassword, updatePassword, deleteAccount, isEmailTaken)
-- `ToastService`: notificaciones con PrimeNG Toast (showSuccess, showError, showWarning, showInfo)
-- `ModalService`: modales con PrimeNG Dialog (openModal, closeModal)
-- `LoadingService`: indicadores de carga (show, hide, isLoading signal)
-- `FormUtilsService`: validación de formularios (getFormControl, getFormError, getErrorMessage)
+Servicios disponibles: `AuthService`, `ApiCallService`, `ToastService`, `ModalService`, `LoadingService`, `FormUtilsService`
 
-**Nota**: Todos exponen estado con signals
+**Características comunes**:
+- Todos exponen estado con signals
+- Para métodos detallados, consultar `services-reference.prompt.md`
 
 
 ## Guards disponibles
 - `authGuard`: verificar autenticación y token válido. Redirige a `/login` si falla
 - `publicGuard`: permitir acceso solo si NO está autenticado. Redirige a `/home` si ya tiene sesión
-- `roleGuard`: verificar roles de usuario. Muestra toast y navega hacia atrás si no tiene permisos (debe usarse siempre con authGuard)
+- `roleGuard`: verificar roles de usuario. Muestra toast y navega hacia atrás si no tiene permisos (debe usarse siempre con `authGuard`)
+
+
+## Ubicación de nuevos archivos
+- **Componentes compartidos** → `src/app/shared/components/`
+- **Páginas** → `src/app/pages/{feature}/`
+- **Servicios utilitarios** → `src/app/utils/services/`
+- **Servicios core** → `src/app/core/services/`
+- **Interfaces compartidas** → `src/app/core/interfaces/`
+- **Guards** → `src/app/core/guards/`
 
 
 ## Tests
@@ -63,21 +88,3 @@ applyTo: '**'
 - **Explicaciones SOLO en chat** (NO crear `.md`, `README.md`, `USAGE.md`, `.example.ts`)
 - Comentarios JSDoc solo para APIs públicas complejas
 - Notas de integración (routes, providers) SOLO en chat
-
-
-## Estructura de carpetas
-```
-src/
-├── app/
-│   ├── core/
-│   │   ├── guards/          # authGuard, publicGuard, roleGuard
-│   │   ├── interfaces/      # Tipos compartidos (auth.ts, user.ts, api.ts)
-│   │   ├── services/        # Servicios core (auth, api-call)
-│   │   └── i18n/            # Configuración de Transloco
-│   ├── pages/               # Páginas de la app
-│   ├── shared/              # Componentes compartidos
-│   └── utils/
-│       └── services/        # Servicios utilitarios (toast, modal, loading, form-utils)
-└── assets/
-    └── i18n/                # Traducciones (es.json, en.json)
-```

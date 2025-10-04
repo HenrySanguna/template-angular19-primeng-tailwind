@@ -21,7 +21,15 @@
     "INVALID": "El valor ingresado no es válido",
     "INSUFFICIENT_PERMISSIONS": "No tienes permisos suficientes",
     "INSUFFICIENT_PERMISSIONS_MESSAGE": "Tu rol actual no permite acceder a esta sección",
-    "ACCESS_DENIED": "Acceso denegado"
+    "ACCESS_DENIED": "Acceso denegado",
+    "NETWORK": "Error de conexión. Verifica tu conexión a internet",
+    "BAD_REQUEST": "Solicitud incorrecta",
+    "UNAUTHORIZED": "No estás autorizado. Por favor, inicia sesión nuevamente",
+    "FORBIDDEN": "No tienes permisos para realizar esta acción",
+    "NOT_FOUND": "El recurso solicitado no fue encontrado",
+    "SERVER_ERROR": "Error interno del servidor. Intenta nuevamente más tarde",
+    "SERVICE_UNAVAILABLE": "Servicio no disponible. Intenta nuevamente más tarde",
+    "UNKNOWN": "Ha ocurrido un error inesperado"
   },
   "COMMON": {
     "OK": "Aceptar",

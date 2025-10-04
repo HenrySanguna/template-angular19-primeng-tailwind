@@ -21,7 +21,15 @@
     "INVALID": "Invalid value",
     "INSUFFICIENT_PERMISSIONS": "Insufficient permissions",
     "INSUFFICIENT_PERMISSIONS_MESSAGE": "Your current role does not allow access to this section",
-    "ACCESS_DENIED": "Access denied"
+    "ACCESS_DENIED": "Access denied",
+    "NETWORK": "Connection error. Check your internet connection",
+    "BAD_REQUEST": "Bad request",
+    "UNAUTHORIZED": "You are not authorized. Please log in again",
+    "FORBIDDEN": "You don't have permission to perform this action",
+    "NOT_FOUND": "The requested resource was not found",
+    "SERVER_ERROR": "Internal server error. Please try again later",
+    "SERVICE_UNAVAILABLE": "Service unavailable. Please try again later",
+    "UNKNOWN": "An unexpected error occurred"
   },
   "COMMON": {
     "OK": "OK",
